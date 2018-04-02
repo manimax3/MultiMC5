@@ -59,7 +59,7 @@ void PasteEEPage::applySettings()
 	auto s = MMC->settings();
 
 	QString pasteKeyToUse;
-	if (ui->customButton->isChecked())
+	if (ui->customButton->isChecked() && ui->customAPIkeyEdit->text() != "")
 		pasteKeyToUse = ui->customAPIkeyEdit->text();
 	else
 	{
@@ -76,5 +76,8 @@ bool PasteEEPage::apply()
 
 void PasteEEPage::textEdited(const QString& text)
 {
-	ui->customButton->setChecked(true);
+    if (text == "")
+        ui->multimcButton->setChecked(true);
+    else
+		ui->customButton->setChecked(true);
 }
