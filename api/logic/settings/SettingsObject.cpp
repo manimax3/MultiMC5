@@ -104,7 +104,8 @@ bool SettingsObject::set(const QString &id, QVariant value)
 	}
 	else
 	{
-		setting->set(value);
+		if (setting->get() != value)
+			setting->set(value);
 		return true;
 	}
 }
